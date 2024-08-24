@@ -9,6 +9,7 @@ type ProducDetailsProps = {
 
 export default function ProductDetails({ item }: ProducDetailsProps) {
   const increaseQuantity = useStore((state) => state.increaseQuantity);
+  const decreaseQuantity = useStore((state) => state.decreaseQuantity);
 
   return (
     <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 ">
@@ -24,7 +25,12 @@ export default function ProductDetails({ item }: ProducDetailsProps) {
           {formatCurrency(item.price)}
         </p>
         <div className="flex gap-5 px-10 py-2 bg-gray-100 w-fit rounded-lg">
-          <button type="button" onClick={() => {}}>
+          <button
+            type="button"
+            onClick={() => {
+              decreaseQuantity(item.id);
+            }}
+          >
             <MinusIcon className="h-6 w-6" />
           </button>
 
